@@ -16,21 +16,14 @@ const App = (props) => {
     setSelected(value);
   }
 
-  const getIndexOfAnecdoteWithMostVotes = () => {
-    const mostVotes = Math.max(...votes);
-
-    for (var index = 0; index < votes.length; index++)
-    {
-      if (votes[index] === mostVotes)
-        return index;
-    }
-  }
-
   const incrementVote = () => {
     const copy = [...votes];
     copy[selected] += 1;
     setVotes(copy);
   }
+
+  const mostVotes = Math.max(...votes);
+  const mostVoted = votes.indexOf(mostVotes);
 
   return (
     <>
@@ -40,8 +33,8 @@ const App = (props) => {
       <Button handleClick={incrementVote} text={'vote'} />
       <Button handleClick={getRandomAnecdote} text={'next anecdote'} />
       <h1>Anecdote with most votes</h1>
-      <div>{props.anecdotes[getIndexOfAnecdoteWithMostVotes()]}</div>
-      <div>has {votes[getIndexOfAnecdoteWithMostVotes()]} votes</div>
+      <div>{props.anecdotes[mostVoted]}</div>
+      <div>has {mostVotes} votes</div>
     </>
   )
 };
