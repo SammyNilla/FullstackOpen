@@ -109,8 +109,7 @@ const App = () => {
         }, 3000);
       })
       .catch((err) => {
-        setPersons(persons.filter(p => p.id !== id));
-
+        // Validation error case
         if (err.response) {
           const newNotif = {
             message: `${err.response.data.error}`,
@@ -120,8 +119,9 @@ const App = () => {
           setTimeout(() => {
             setNotifDetails({message: null});
           }, 5000);
+          return;
         }
-
+        // User already deleted case
         setPersons(persons.filter(p => p.id !== id));
         const newNotif = {
           message: err,
