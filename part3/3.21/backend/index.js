@@ -39,7 +39,7 @@ app.post('/api/persons', (req, res, next) => {
     .catch((err) => next(err));
 });
 
-app.get('/api/persons/:id', (req, res) => {
+app.get('/api/persons/:id', (req, res, next) => {
   Person.findById(req.params.id)
     .then(person => {
       if (person) {

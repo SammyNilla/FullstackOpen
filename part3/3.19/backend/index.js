@@ -39,7 +39,7 @@ app.post('/api/persons', (req, res, next) => {
     .catch((err) => next(err));
 });
 
-app.get('/api/persons/:id', (req, res) => {
+app.get('/api/persons/:id', (req, res, next) => {
   Person.findById(req.params.id)
     .then(person => {
       if (person) {
@@ -64,7 +64,7 @@ app.put('/api/persons/:id', (req, res, next) => {
     })
     .catch((err) => next(err));
 });
-app.delete('/api/persons/:id', (req, res) => {
+app.delete('/api/persons/:id', (req, res, next) => {
   Person.findByIdAndRemove(req.params.id)
     .then(() => {
       res.status(204).end();
