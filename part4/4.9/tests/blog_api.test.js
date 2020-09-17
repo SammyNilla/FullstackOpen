@@ -25,7 +25,9 @@ test('blogs are returned as json', async () => {
 test('blog has property id defined', async () => {
   const response = await api.get('/api/blogs');
   const ids = response.body.map(r => r.id);
-  expect(ids).toBeDefined();
+  // Doing toBeDefined on the array does not prompt the results I was expected.
+  // Instead, I'm going to pop a blog off the stack and analyze it.
+  expect(ids.pop()).toBeDefined();
 });
 
 afterAll(() => {
