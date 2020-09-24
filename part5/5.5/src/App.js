@@ -123,7 +123,7 @@ const App = () => {
 
   // This should eventually be in its own component
   const newBlogForm = () => (
-    <Togglable buttonLabel="new note">
+    <Togglable buttonLabel="create new blog">
       <h2>create new</h2>
       <form onSubmit={ handleNewBlog }>
         <div>
